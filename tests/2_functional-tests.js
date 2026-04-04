@@ -20,35 +20,35 @@ suite('Functional Tests', function() {
       });
   });
 
-  test('Convert an invalid input such as 32g', done => {
-    chai.request(server)
-      .get('/api/convert')
-      .query({ input: '32g' })
-      .end((err, res) => {
-        assert.equal(res.body, 'invalid unit');
-        done();
-      });
-  });
+test('Convert an invalid input such as 32g', done => {
+  chai.request(server)
+    .get('/api/convert')
+    .query({ input: '32g' })
+    .end((err, res) => {
+      assert.equal(res.body.error, 'invalid unit');
+      done();
+    });
+});
 
-  test('Convert an invalid number such as 3/7.2/4kg', done => {
-    chai.request(server)
-      .get('/api/convert')
-      .query({ input: '3/7.2/4kg' })
-      .end((err, res) => {
-        assert.equal(res.body, 'invalid number');
-        done();
-      });
-  });
+test('Convert an invalid number such as 3/7.2/4kg', done => {
+  chai.request(server)
+    .get('/api/convert')
+    .query({ input: '3/7.2/4kg' })
+    .end((err, res) => {
+      assert.equal(res.body.error, 'invalid number');
+      done();
+    });
+});
 
-  test('Convert an invalid number AND unit such as 3/7.2/4kilomegagram', done => {
-    chai.request(server)
-      .get('/api/convert')
-      .query({ input: '3/7.2/4kilomegagram' })
-      .end((err, res) => {
-        assert.equal(res.body, 'invalid number and unit');
-        done();
-      });
-  });
+test('Convert an invalid number AND unit such as 3/7.2/4kilomegagram', done => {
+  chai.request(server)
+    .get('/api/convert')
+    .query({ input: '3/7.2/4kilomegagram' })
+    .end((err, res) => {
+      assert.equal(res.body.error, 'invalid number and unit');
+      done();
+    });
+});
 
   test('Convert with no number such as kg', done => {
     chai.request(server)
