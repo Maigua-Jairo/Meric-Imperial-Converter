@@ -12,9 +12,10 @@ module.exports = function(app) {
     const numInvalid  = initNum  === 'invalid number';
     const unitInvalid = initUnit === 'invalid unit';
 
-    if (numInvalid && unitInvalid) return res.json({ error: 'invalid number and unit' });
-    if (numInvalid)  return res.json({ error: 'invalid number' });
-    if (unitInvalid) return res.json({ error: 'invalid unit' });
+    // ✅ Devolver string directo, no objeto
+    if (numInvalid && unitInvalid) return res.json('invalid number and unit');
+    if (numInvalid)  return res.json('invalid number');
+    if (unitInvalid) return res.json('invalid unit');
 
     const returnNum  = convertHandler.convert(initNum, initUnit);
     const returnUnit = convertHandler.getReturnUnit(initUnit);
