@@ -18,7 +18,7 @@ suite('Functional Tests', function() {
 
  test('invalid input 32g', done => {
   chai.request(server).get('/api/convert').query({input:'32g'}).end((err, res) => {
-    assert.equal(res.body, 'invalid unit');  // string, no objeto
+    assert.equal(res.body, 'invalid unit');  
     done();
   });
 });
