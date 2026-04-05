@@ -1,26 +1,18 @@
+let inputRegex = /[a-z]+|[^a-z]+/gi
+
 function ConvertHandler() {
 
   this.getNum = function(input) {
-    const numStr = input.replace(/[a-zA-Z]+$/i, '');
-    if (!numStr) return 1;
-    const doubleFrac = numStr.match(/\//g);
-    if (doubleFrac && doubleFrac.length > 1) return 'invalid number';
-    if (numStr.includes('/')) {
-      const parts = numStr.split('/');
-      const a = parseFloat(parts[0]);
-      const b = parseFloat(parts[1]);
-      if (isNaN(a) || isNaN(b) || b === 0) return 'invalid number';
-      return a / b;
-    }
-    const n = parseFloat(numStr);
-    return isNaN(n) ? 'invalid number' : n;
+      var result;
+      result= input.match(inputRegex)[0]
+      return result        }
+  
   };
 
   this.getUnit = function(input) {
-    const validUnits = ['gal','l','mi','km','lbs','kg'];
-    const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
-    if (!validUnits.includes(unit)) return 'invalid unit';
-    return unit === 'l' ? 'L' : unit;
+   var result;
+    result= input.match(inputRegex)[0]
+    return result
   };
 
   this.getReturnUnit = function(initUnit) {
