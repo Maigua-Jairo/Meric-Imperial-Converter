@@ -5,8 +5,7 @@ function ConvertHandler() {
   this.getNum = function(input) {
       var result;
       result= input.match(inputRegex)[0]
-      return result        }
-  
+      return result
   };
 
   this.getUnit = function(input) {
@@ -43,6 +42,7 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
   };
+
 }
 
 module.exports = ConvertHandler;
