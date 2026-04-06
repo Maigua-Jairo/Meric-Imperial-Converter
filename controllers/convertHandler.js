@@ -22,6 +22,12 @@ function ConvertHandler() {
     } else if (initUnit == 'L' || initUnit == 'l') {
       result = 'gal';
     }
+    if (initUnit === 'lbs' || initUnit === 'LBS') {
+      result = 'kg'
+    } else if (initUnit === 'kg' || initUnit === 'KG') {
+      result = 'lbs'
+    }
+
     return result;
   };
 
@@ -35,11 +41,18 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
-    
+
     if (initUnit == 'gal' || initUnit == 'GAL') {
       result = (initNum * galToL).toFixed(5);
     } else if (initUnit == 'L' || initUnit == 'l') {
       result = (initNum / galToL).toFixed(5);
+    }
+    if (initUnit === 'lbs' || initUnit === 'LBS') {
+      /* Convert Pounds to Kilograms */
+      result = initNum * lbsToKg
+    } else if (initUnit === 'kg' || initUnit === 'KG') {
+      /* Converts Kilograms to Pounds */
+      result = parseFloat((initNum / lbsToKg).toFixed(5))
     }
     return result;
   };

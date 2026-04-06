@@ -70,10 +70,18 @@ suite('Unit Tests', function () {
       //done();
     });
     test('Lbs to Kg', function (done) {
-      //done();
+      var input = [5, 'lbs'];
+      var expected = 2.26796;
+      assert.approximately(convertHandler.convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
+
     test('Kg to Lbs', function (done) {
-      //done();
+      var input = [5, 'kg'];
+      var expected = 11.0231;
+      assert.approximately(convertHandler.convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
   });
+});
 }); 
