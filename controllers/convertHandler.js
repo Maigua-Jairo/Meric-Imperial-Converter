@@ -7,7 +7,7 @@ this.getNum = function(input) {
   
   result = input.match(inputRegex)[0]
   
-  if(isNan(result){
+  if(isNaN(result)){
     return 'invalid number'
   }
       
