@@ -8,12 +8,12 @@ function ConvertHandler() {
     return result
   };
 
-this.getUnit = function(input) {
-  const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
-  const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
-  if (!validUnits.includes(unit)) return 'invalid unit';
-  return unit === 'l' ? 'L' : unit;
-};
+  this.getUnit = function (input) {
+    const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
+    const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
+    if (!validUnits.includes(unit)) return 'invalid unit';
+    return unit === 'l' ? 'L' : unit;
+  };
 
   this.getReturnUnit = function (initUnit) {
     var result;
@@ -28,6 +28,11 @@ this.getUnit = function(input) {
     } else if (initUnit === 'kg' || initUnit === 'KG') {
       result = 'lbs'
     }
+    if (initUnit === 'mi' || initUnit === 'MI') {
+      result = 'km'
+    } else if (initUnit === 'km' || initUnit === 'KM') {
+      result = 'mi'
+    }
 
     return result;
   };
@@ -37,28 +42,28 @@ this.getUnit = function(input) {
     return result;
   };
 
-this.convert = function(initNum, initUnit) {
-  const galToL  = 3.78541;
-  const lbsToKg = 0.453592;
-  const miToKm  = 1.60934;
-  var result;
+  this.convert = function (initNum, initUnit) {
+    const galToL = 3.78541;
+    const lbsToKg = 0.453592;
+    const miToKm = 1.60934;
+    var result;
 
-  if (initUnit === 'gal') {
-    result = initNum * galToL;
-  } else if (initUnit === 'L') {
-    result = initNum / galToL;
-  } else if (initUnit === 'mi') {
-    result = initNum * miToKm;
-  } else if (initUnit === 'km') {
-    result = initNum / miToKm;
-  } else if (initUnit === 'lbs') {
-    result = initNum * lbsToKg;
-  } else if (initUnit === 'kg') {
-    result = initNum / lbsToKg;
-  }
+    if (initUnit === 'gal') {
+      result = initNum * galToL;
+    } else if (initUnit === 'L') {
+      result = initNum / galToL;
+    } else if (initUnit === 'mi') {
+      result = initNum * miToKm;
+    } else if (initUnit === 'km') {
+      result = initNum / miToKm;
+    } else if (initUnit === 'lbs') {
+      result = initNum * lbsToKg;
+    } else if (initUnit === 'kg') {
+      result = initNum / lbsToKg;
+    }
 
-  return parseFloat(result.toFixed(5));
-};
+    return parseFloat(result.toFixed(5));
+  };
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
   };
