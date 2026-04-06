@@ -4,19 +4,15 @@ function ConvertHandler() {
 
 this.getNum = function(input) {
   var result;
-  const numStr = input.match(/[^a-zA-Z]+/i);
-  if (!numStr) return 1;
-  const str = numStr[0];
-  if ((str.match(/\//g) || []).length > 1) return 'invalid number';
-  if (str.includes('/')) {
-    const parts = str.split('/');
-    result = parseFloat(parts[0]) / parseFloat(parts[1]);
-  } else {
-    result = parseFloat(str);
+  
+  result = input.match(inputRegex)[0]
+  
+  if(isNan(result){
+    return 'invalid number'
   }
-  return isNaN(result) ? 'invalid number' : result;
+      
+  return result;
 };
-
   this.getUnit = function (input) {
     const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
     const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
