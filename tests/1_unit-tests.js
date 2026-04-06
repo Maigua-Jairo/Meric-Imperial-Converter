@@ -31,7 +31,10 @@ suite('Unit Tests', function () {
       done();
     });
     test('Unknown Unit Input', function (done) {
-      //done();
+      let input = 'g'
+      let expected = 'invalid unit'
+      assert.equal(convertHandler.getUnit(32 + input), expected)
+      done()
     });
   });
   suite('Function convertHandler.getReturnUnit(initUnit)', function () {

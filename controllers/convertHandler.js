@@ -9,10 +9,16 @@ function ConvertHandler() {
   };
 
   this.getUnit = function (input) {
-    const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
-    const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
-    if (!validUnits.includes(unit)) return 'invalid unit';
-    return unit === 'l' ? 'L' : unit;
+    var result;
+
+    result = input.match(inputRegex)[1]
+
+    let validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL', 'L', 'MI', 'KM', 'LBS', 'KG']
+    if (!validUnits.includes(result)) {
+      return 'invalid unit'
+    }
+
+    return result;
   };
 
   this.getReturnUnit = function (initUnit) {
