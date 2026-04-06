@@ -33,12 +33,11 @@ suite('Functional Tests', function () {
                 chai.request(server)
                     .get('/api/convert')
                     .query({ input: '3/7.2/4kg' })
-                    .end((error, response) => {
-                        assert.equal(response.body = 'invalid number')
-                    })
-                done();
+                    .end((err, res) => {
+                        assert.equal(res.body, 'invalid number');
+                        done();  
+                    });
             });
-
             test('Convert 3/7.2/4kilomegagram (invalid number and unit)', function (done) {
                 chai.request(server)
                     .get('/api/convert')
