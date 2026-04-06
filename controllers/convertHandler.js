@@ -41,14 +41,12 @@ function ConvertHandler() {
     } else if (initUnit == 'L' || initUnit == 'l') {
       result = (initNum / galToL).toFixed(5);
     }
+    return result;
   };
-  return result;
-};
 
-this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-  return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
-};
-
+  this.getString = function (initNum, initUnit, returnNum, returnUnit) {
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+  };
 }
 
 module.exports = ConvertHandler;
