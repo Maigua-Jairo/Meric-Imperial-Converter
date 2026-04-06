@@ -3,7 +3,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var server = require('../server');
 chai.use(chaiHttp);
-suitev('Functional Tests', function () {
+suite('Functional Tests', function () {
     suite('Routing Test', function () {
         suite('GET /api/convert ==> conversion object', function () {
             test('Convert 10L (valid input)', function (done) {
@@ -48,9 +48,16 @@ suitev('Functional Tests', function () {
                         done();
                     });
             });
-            test('Convert kg (no number)', function (done) {
-                //done();
+                    test('Convert kg (no number)', function (done) {
+                        chai.request(server)
+                            .get('/api/convert')
+                            .query({ input: 'kg' })
+                            .end((err, res) => {
+                                assert.equal(res.body.initNum, 1);
+                                assert.equal(res.body.initUnit, 'kg');
+                                done();
+                    });
+                });
             });
         });
     });
-});

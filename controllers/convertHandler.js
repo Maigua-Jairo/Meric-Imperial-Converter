@@ -2,11 +2,20 @@ let inputRegex = /[a-z]+|[^a-z]+/gi
 
 function ConvertHandler() {
 
-  this.getNum = function (input) {
-    var result;
-    result = input.match(inputRegex)[0]
-    return result
-  };
+this.getNum = function(input) {
+  var result;
+  const numStr = input.match(/[^a-zA-Z]+/i);
+  if (!numStr) return 1;
+  const str = numStr[0];
+  if ((str.match(/\//g) || []).length > 1) return 'invalid number';
+  if (str.includes('/')) {
+    const parts = str.split('/');
+    result = parseFloat(parts[0]) / parseFloat(parts[1]);
+  } else {
+    result = parseFloat(str);
+  }
+  return isNaN(result) ? 'invalid number' : result;
+};
 
   this.getUnit = function (input) {
     const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
@@ -37,10 +46,13 @@ function ConvertHandler() {
     return result;
   };
 
-  this.spellOutUnit = function (unit) {
-    var result;
-    return result;
+this.spellOutUnit = function(unit) {
+  const map = {
+    gal: 'gallons', L: 'liters', mi: 'miles',
+    km: 'kilometers', lbs: 'pounds', kg: 'kilograms'
   };
+  return map[unit];
+};
 
   this.convert = function (initNum, initUnit) {
     const galToL = 3.78541;
