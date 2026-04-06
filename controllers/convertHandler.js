@@ -48,10 +48,9 @@ function ConvertHandler() {
       result = (initNum / galToL).toFixed(5);
     }
     if (initUnit === 'lbs' || initUnit === 'LBS') {
-      /* Convert Pounds to Kilograms */
       result = initNum * lbsToKg
     } else if (initUnit === 'kg' || initUnit === 'KG') {
-      /* Converts Kilograms to Pounds */
+
       result = parseFloat((initNum / lbsToKg).toFixed(5))
     }
     return result;
