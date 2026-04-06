@@ -8,11 +8,12 @@ function ConvertHandler() {
     return result
   };
 
-  this.getUnit = function (input) {
-    var result;
-    result = input.match(inputRegex)[1]
-    return result
-  };
+this.getUnit = function(input) {
+  const validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
+  const unit = input.replace(/[\d\/.]+/g, '').toLowerCase();
+  if (!validUnits.includes(unit)) return 'invalid unit';
+  return unit === 'l' ? 'L' : unit;
+};
 
   this.getReturnUnit = function (initUnit) {
     var result;
