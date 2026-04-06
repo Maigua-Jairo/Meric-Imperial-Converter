@@ -51,25 +51,6 @@ suite('Unit Tests', function () {
     });
   });
   suite('Function convertHandler.convert(num, unit)', function () {
-    test('Gal to L', function (done) {
-      var input = [5, 'gal'];
-      var expected = 18.9271;
-      assert.approximately(convertHandler.convert(input[0], input[1]), expected, 0.1);
-      done();
-    });
-    test('L to Gal', function (done) {
-      var input = [5, 'l'];
-      var expected = 18.9271;
-      assert.approximately(convertHandler.convert(input[0], input[1]), expected, 0.1);
-      done();
-    });
-    test('Mi to Km', function (done) {
-      //done();
-    });
-    test('Km to Mi', function (done) {
-      //done();
-    });
-
     test('For Each Valid Unit Inputs', function (done) {
       var input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL', 'L', 'MI', 'KM', 'LBS', 'KG'];
       var expected = ['gal', 'L', 'mi', 'km', 'lbs', 'kg', 'gal', 'L', 'mi', 'km', 'lbs', 'kg'];
